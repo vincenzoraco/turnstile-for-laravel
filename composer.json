@@ -1,0 +1,105 @@
+{
+  "name": "vincenzoraco/turnstile-for-laravel",
+  "description": "Laravel package to facilitate the server side validation of Cloudflare's Turnstile captcha service.",
+  "keywords": [
+    "laravel",
+    "package",
+    "cloudflare",
+    "trunstile"
+  ],
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Vincenzo Raco",
+      "email": "vincenzoraco@users.noreply.github.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "VincenzoRaco\\TurnstileLaravel\\": "src/"
+    },
+    "files": [
+      "./helpers.php"
+    ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "VincenzoRaco\\TurnstileLaravel\\Tests\\": "tests"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "VincenzoRaco\\TurnstileLaravel\\Providers\\TurnstileServiceProvider"
+      ],
+      "aliases": {
+        "Turnstile": "VincenzoRaco\\TurnstileLaravel\\Facades\\Turnstile"
+      }
+    }
+  },
+  "require": {
+    "php": "^8.3",
+    "vincenzoraco/turnstile-php": "^1.1"
+  },
+  "suggest": {
+    "illuminate/support": "for the Laravel integration",
+    "illuminate/contracts": "for the Laravel integration"
+  },
+  "require-dev": {
+    "laravel/framework": "^12.0",
+    "laravel/pint": "^1.0",
+    "orchestra/canvas": "^10.0",
+    "orchestra/testbench": "^10.0",
+    "pestphp/pest": "^3.7",
+    "phpstan/phpstan": "1.10.56",
+    "rector/rector": "0.19.5"
+  },
+  "scripts": {
+    "refactor": "rector",
+    "test:refactor": "rector --dry-run",
+    "test:types": "phpstan analyse --ansi",
+    "test:unit": "pest --colors=always",
+    "test:lint": "pint --test",
+    "test": [
+      "@test:refactor",
+      "@test:lint",
+      "@test:types",
+      "@test:unit"
+    ],
+    "fix:lint": "pint --preset laravel",
+    "fix:refactor": "rector",
+    "fix": [
+      "@fix:refactor",
+      "@fix:lint"
+    ],
+    "hook": [
+      "@hook:pre-commit",
+      "@hook:pre-push"
+    ],
+    "hook:install": [
+      "ln -sf $PWD/hooks/pre-commit .git/hooks/pre-commit",
+      "chmod +x .git/hooks/pre-commit",
+      "ln -sf $PWD/hooks/pre-push .git/hooks/pre-push",
+      "chmod +x .git/hooks/pre-push"
+    ],
+    "hook:pre-commit": [
+      "hooks/pre-commit"
+    ],
+    "hook:pre-push": [
+      "hooks/pre-push"
+    ],
+    "post-install-cmd": [
+      "@hook:install"
+    ]
+  },
+  "config": {
+    "sort-packages": true,
+    "preferred-install": "dist",
+    "allow-plugins": {
+      "pestphp/pest-plugin": true
+    }
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true
+}

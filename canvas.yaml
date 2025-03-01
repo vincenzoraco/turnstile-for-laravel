@@ -1,0 +1,27 @@
+preset: package
+
+namespace: VincenzoRaco\TurnstileLaravel
+user-auth-model: App\Models\User
+
+paths:
+  src: src
+  resource: resources
+
+factory:
+  path: database/factories
+
+migration:
+  path: database/migrations
+  prefix: ''
+
+console:
+  namespace: VincenzoRaco\TurnstileLaravel\Console
+
+model:
+  namespace: VincenzoRaco\TurnstileLaravel\Models
+
+provider:
+  namespace: VincenzoRaco\TurnstileLaravel\Providers
+
+testing:
+  namespace: VincenzoRaco\TurnstileLaravel\Tests
