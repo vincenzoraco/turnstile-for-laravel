@@ -4,7 +4,7 @@ on:
   pull_request:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   unit-tests:
@@ -14,7 +14,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        php: [8.2]
+        php: [8.3, 8.4, 8.5]
         dependency-version: [prefer-stable]
 
     steps:
