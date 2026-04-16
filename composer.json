@@ -39,7 +39,7 @@
   "require": {
     "php": "^8.3",
     "illuminate/support": "^11.0|^12.0",
-    "vincenzoraco/turnstile-php": "^1.1"
+    "vincenzoraco/turnstile-php": "^2.0"
   },
   "suggest": {},
   "require-dev": {
@@ -47,7 +47,7 @@
     "laravel/pint": "^1.0",
     "orchestra/canvas": "^10.0",
     "orchestra/testbench": "^10.0",
-    "pestphp/pest": "^3.7",
+    "pestphp/pest": "^3.7 || ^4.0",
     "phpstan/phpstan": "^2.1",
     "rector/rector": "^2.0"
   },
