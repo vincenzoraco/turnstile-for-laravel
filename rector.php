@@ -3,40 +3,14 @@
 declare(strict_types=1);
 
 use Rector\Config\RectorConfig;
-use Rector\Php81\Rector\ClassConst\FinalizePublicClassConstantRector;
-use Rector\Privatization\Rector\Class_\FinalizeClassesWithoutChildrenRector;
-use Rector\Privatization\Rector\ClassMethod\PrivatizeFinalClassMethodRector;
-use Rector\Privatization\Rector\MethodCall\PrivatizeLocalGetterToPropertyRector;
-use Rector\Privatization\Rector\Property\PrivatizeFinalClassPropertyRector;
-use Rector\Set\ValueObject\LevelSetList;
-use Rector\Set\ValueObject\SetList;
 
-return static function (RectorConfig $rectorConfig): void {
-    $rectorConfig->paths([__DIR__.'/src']);
-
-    $rectorConfig->rules(
-        [
-            PrivatizeLocalGetterToPropertyRector::class,
-            PrivatizeFinalClassPropertyRector::class,
-            PrivatizeFinalClassMethodRector::class,
-        ]
+return RectorConfig::configure()
+    ->withPaths([__DIR__.'/src'])
+    ->withPhpSets(php83: true)
+    ->withPreparedSets(
+        codeQuality: true,
+        deadCode: true,
+        earlyReturn: true,
+        typeDeclarations: true,
+        privatization: true,
     );
-
-    $rectorConfig->skip(
-        [
-            FinalizeClassesWithoutChildrenRector::class,
-            FinalizePublicClassConstantRector::class,
-        ]
-    );
-
-    $rectorConfig->sets(
-        [
-            LevelSetList::UP_TO_PHP_82,
-            SetList::CODE_QUALITY,
-            SetList::DEAD_CODE,
-            SetList::EARLY_RETURN,
-            SetList::TYPE_DECLARATION,
-            SetList::PRIVATIZATION,
-        ]
-    );
-};

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace VincenzoRaco\TurnstileLaravel\Providers;
 
 use Illuminate\Support\ServiceProvider;
@@ -14,12 +16,11 @@ class TurnstileServiceProvider extends ServiceProvider
         ], 'turnstile-config');
     }
 
+    #[\Override]
     public function register(): void
     {
-        $this->mergeConfigFrom(dirname(__DIR__, 2).'/config/turnstile.php', 'skeleton');
+        $this->mergeConfigFrom(dirname(__DIR__, 2).'/config/turnstile.php', 'turnstile');
 
-        $this->app->bind('turnstile', function ($app) {
-            return new TurnstileLaravel;
-        });
+        $this->app->bind('turnstile', fn ($app): TurnstileLaravel => new TurnstileLaravel);
     }
 }

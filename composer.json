@@ -5,7 +5,7 @@
     "laravel",
     "package",
     "cloudflare",
-    "trunstile"
+    "turnstile"
   ],
   "type": "library",
   "license": "MIT",
@@ -19,9 +19,7 @@
     "psr-4": {
       "VincenzoRaco\\TurnstileLaravel\\": "src/"
     },
-    "files": [
-      "./helpers.php"
-    ]
+    "files": []
   },
   "autoload-dev": {
     "psr-4": {
@@ -40,20 +38,18 @@
   },
   "require": {
     "php": "^8.3",
+    "illuminate/support": "^11.0|^12.0",
     "vincenzoraco/turnstile-php": "^1.1"
   },
-  "suggest": {
-    "illuminate/support": "for the Laravel integration",
-    "illuminate/contracts": "for the Laravel integration"
-  },
+  "suggest": {},
   "require-dev": {
     "laravel/framework": "^12.0",
     "laravel/pint": "^1.0",
     "orchestra/canvas": "^10.0",
     "orchestra/testbench": "^10.0",
     "pestphp/pest": "^3.7",
-    "phpstan/phpstan": "1.10.56",
-    "rector/rector": "0.19.5"
+    "phpstan/phpstan": "^2.1",
+    "rector/rector": "^2.0"
   },
   "scripts": {
     "refactor": "rector",

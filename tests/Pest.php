@@ -1,5 +1,7 @@
 <?php
 
+use VincenzoRaco\TurnstileLaravel\Tests\TestCase;
+
 /*
 |--------------------------------------------------------------------------
 | Test Case
@@ -11,7 +13,7 @@
 |
 */
 
-uses(\VincenzoRaco\TurnstileLaravel\Tests\TestCase::class)->in('Feature');
+uses(TestCase::class)->in('Feature');
 
 /*
 |--------------------------------------------------------------------------
